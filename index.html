@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenyan student · two genders</title>
+  <style>
+    /* === internal styling — labels always have border+padding === */
+    body {
+      background: #eaf0f6;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 20px;
+    }
+    .card {
+      max-width: 750px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      padding: 2.2rem 2.2rem 2.8rem;
+      box-shadow: 0 20px 30px -8px #a1b8cc;
+      border: 1px solid #cbdae6;
+    }
+    /* logo – simple kenyan flag + book */
+    .logo {
+      font-size: 4.2rem;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 0.1rem;
+      filter: drop-shadow(0 6px 8px #b7cfdd);
+    }
+    h1 {
+      text-align: center;
+      font-weight: 650;
+      font-size: 2.3rem;
+      letter-spacing: -0.5px;
+      color: #104857;
+      margin: 0.2rem 0 0.4rem;
+      border-bottom: 3px solid #c1ddec;
+      padding-bottom: 0.6rem;
+    }
+    /* all <label> elements get border + padding – visually distinct */
+    label {
+      border: 2px solid #1c6a7a;        /* deep ocean */
+      background-color: #f4fafd;
+      padding: 6px 14px;
+      margin: 6px 12px 6px 0;
+      display: inline-block;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #003542;
+      font-size: 1rem;
+      box-shadow: 0 2px 5px rgba(20,80,100,0.1);
+      transition: 0.1s;
+    }
+    /* radio/checkbox labels sit next to inputs */
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      margin-left: 2px;
+    }
+    /* input and select styling */
+    input, select, button {
+      font-family: inherit;
+      font-size: 1rem;
+      border-radius: 40px;
+      padding: 10px 20px;
+      border: 1.8px solid #b9d0df;
+      background: white;
+      margin: 8px 0 8px 5px;
+      outline: none;
+      transition: 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #0d5468;
+      box-shadow: 0 0 0 4px rgba(12, 110, 130, 0.2);
+    }
+    /* field groups */
+    .field {
+      margin: 1.8rem 0 1rem;
+      border-left: 5px solid #d0e6f2;
+      padding-left: 1.2rem;
+    }
+    /* the category labels (first inside field) */
+    .field > label:first-of-type {
+      background-color: #dcf0f8;
+      border-color: #115a6b;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    /* inline wrapper for radios/checkboxes */
+    .options-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 0;
+    }
+    /* submit / reset buttons */
+    .buttons-row {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    input[type="submit"], input[type="reset"] {
+      background: #166b7c;
+      color: white;
+      border: none;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 14px 40px;
+      border-radius: 60px;
+      box-shadow: 0 5px 0 #03303d;
+      cursor: pointer;
+      transition: 0.15s;
+      min-width: 190px;
+      border: 2px solid transparent;
+    }
+    input[type="reset"] {
+      background: #3f6375;
+      box-shadow: 0 5px 0 #213e4b;
+    }
+    input[type="submit"]:hover {
+      background: #1f8399;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 #03303d;
+    }
+    input[type="reset"]:hover {
+      background: #557e94;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 #213e4b;
+    }
+    /* date field */
+    input[type="date"] {
+      padding: 8px 20px;
+    }
+    /* dropdown arrow */
+    select {
+      padding: 10px 45px 10px 20px;
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%231a687a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 1.2rem center;
+    }
+    /* break line after title */
+    .title-break {
+      margin: 18px 0 20px;
+      border-top: 3px dashed #aec9dd;
+    }
+    /* kenyan flavour */
+    ::placeholder {
+      color: #2f687b;
+      font-style: italic;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <!-- simple logo (flag + graduation cap) above title -->
+  <div class="logo">🇰🇪 🎓</div>
+  <h1>✧ STUDENT REGISTRATION ✧</h1>
+  <!-- using <br> to separate title as requested (brake) -->
+  <br>
+  <div class="title-break"></div> <!-- extra visual break -->
+
+  <!-- form – submit shows demo alert, reset works natively -->
+  <form onsubmit="alert('📋 Karibu! registration demo (Kenyan).'); return false;">
+    <!-- NAME with Kenyan placeholder -->
+    <div class="field">
+      <label for="fullname">👤 FULL NAME</label>
+      <input type="text" id="fullname" name="fullname" 
+             placeholder="e.g., Mwende Achieng' Otieno" required>
+    </div>
+
+    <!-- EMAIL – kenyan email pattern -->
+    <div class="field">
+      <label for="email">📧 EMAIL</label>
+      <input type="email" id="email" name="email" 
+             placeholder="e.g., kipchoge.chepkwony@kenya.ac.ke" required>
+    </div>
+
+    <!-- DATE OF BIRTH -->
+    <div class="field">
+      <label for="dob">📅 DATE OF BIRTH</label>
+      <input type="date" id="dob" name="dob">
+    </div>
+
+    <!-- GENDER - only male & female (no 'other') -->
+    <div class="field">
+      <label>⚥ GENDER (male / female)</label>
+      <div class="options-row">
+        <!-- male -->
+        <label for="male">👨 Male</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <!-- female -->
+        <label for="female">👩 Female</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <!-- ONLY TWO – "other" removed as requested -->
+      </div>
+    </div>
+
+    <!-- HOBBIES checklist (multiple selection) -->
+    <div class="field">
+      <label>🎯 HOBBIES</label>
+      <div class="options-row">
+        <label for="read">📚 Reading</label>
+        <input type="checkbox" id="read" name="hobbies" value="reading">
+        <label for="sport">⚽ Sports</label>
+        <input type="checkbox" id="sport" name="hobbies" value="sports">
+        <label for="music">🎸 Music</label>
+        <input type="checkbox" id="music" name="hobbies" value="music">
+        <label for="nature">🌿 Nature walks</label>
+        <input type="checkbox" id="nature" name="hobbies" value="nature">
+        <label for="cooking">🍲 Cooking</label>
+        <input type="checkbox" id="cooking" name="hobbies" value="cooking">
+      </div>
+    </div>
+
+    <!-- MAIN COURSE dropdown (IT, CS, Business IT, Data Science) -->
+    <div class="field">
+      <label for="mainCourse">📘 MAIN COURSE</label>
+      <select id="mainCourse" name="mainCourse" required>
+        <option value="" disabled selected>– choose programme –</option>
+        <option value="IT">IT (Information Technology)</option>
+        <option value="CS">Computer Science</option>
+        <option value="Business IT">Business IT</option>
+        <option value="Data Science">Data Science</option>
+      </select>
+    </div>
+
+    <!-- button row: submit & reset -->
+    <div class="buttons-row">
+      <input type="submit" value="📬 SUBMIT">
+      <input type="reset" value="🗑️ RESET">
+    </div>
+
+    <!-- small footer (kenyan) -->
+    <p style="text-align: center; margin-top: 28px; color: #145b6e; border-top: 1px solid #b3d4e8; padding-top: 12px;">
+      🇰🇪 form inakubalika • wasilisha kwa usajili
+    </p>
+  </form>
+</div>
+
+<!-- 
+  ✓ exact requirement: only male / female (no "other" gender)
+  ✓ all labels have border + padding (global <label> style)
+  ✓ dropdown contains: IT, Computer Science, Business IT, Data Science
+  ✓ kenyan names/placeholders: Mwende Achieng' Otieno, kipchoge.chepkwony@kenya.ac.ke
+  ✓ logo (flag + cap) above title
+  ✓ <br> used after title to separate (plus dashed line)
+  ✓ internal CSS only
+  ✓ submit + reset functional
+-->
+</body>
+</html>
